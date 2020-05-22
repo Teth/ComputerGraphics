@@ -10,20 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MyCar implements ActionListener {
-    private float upperEyeLimit = 15.0f;
-    private float lowerEyeLimit = 5.0f;
-    private float farthestEyeLimit = 28.0f;
-    private float nearestEyeLimit = 22.0f;
-
     private TransformGroup carTransformGroup;
     private TransformGroup viewingTransformGroup;
     private Transform3D carTransform3D = new Transform3D();
     private Transform3D viewingTransform = new Transform3D();
     private float angle = 0;
-    private float eyeHeight;
-    private float eyeDistance;
-    private boolean descend = true;
-    private boolean approaching = true;
+
 
     public static void main(String[] args) {
         new MyCar();
@@ -35,9 +27,6 @@ public class MyCar implements ActionListener {
 
         viewingTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
         universe.addBranchGraph(createSceneGraph());
-
-        eyeHeight = upperEyeLimit;
-        eyeDistance = farthestEyeLimit;
         timer.start();
     }
 
@@ -193,9 +182,7 @@ public class MyCar implements ActionListener {
         carTransformGroup.setTransform(carTransform3D);
         angle += delta;
 
-
-
-        Point3d eye = new Point3d(20.0f, 1.0f, 6.0f); // spectator's eye
+        Point3d eye = new Point3d(20.0f, 0f, 6.0f); // spectator's eye
         Point3d center = new Point3d(0f, .0f ,1.0f); // sight target
         Vector3d up = new Vector3d(.0f, .0f, 1.0f);; // the camera frustum
         viewingTransform.lookAt(eye, center, up);
