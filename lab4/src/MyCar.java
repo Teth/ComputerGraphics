@@ -50,6 +50,7 @@ public class MyCar implements ActionListener {
         AmbientLight ambientLightNode = new AmbientLight(ambientColor);
         ambientLightNode.setInfluencingBounds(bounds);
         objRoot.addChild(ambientLightNode);
+
         return objRoot;
     }
 
